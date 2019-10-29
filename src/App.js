@@ -9,24 +9,32 @@ const PHOTO_LIST_URL = "https://picsum.photos/list";
 
 class App extends Component {
   // 1. Declare a state object that will be used to track an array of photos
-  state = {};
+  constructor(props) {
+    super(props);
+    this.state = {photos: []};
+  }
 
   // 2. Declare a life cycle method
   // This life cycle method should:
-  //  - will be called after the component is initially rendered
+  // - will be called after the component is initially rendered
   // - will fetch an array of photos
   // - will add that array of photos to state once received
+
+  componentDidMount() {
+    fetch(PHOTO_LIST_URL)
+    .then(res => res.json())
+    .then(data => {
+      this.setState({photos: data})
+      console.log(this.state.photos)
+    })
+  }
+
   render() {
     const { photos = [] } = this.state;
     return (
       <React.Fragment>
         <header>
-          <h1>Photo Wall</h1>
-          <p>
-            Start by reading App.jsx and completing the numbered steps.
-            Afterward, delete this paragraph. Then, open up App.css and complete
-            the instructions there.
-          </p>
+        <h1>Photo Wall</h1>
         </header>
         <div className="collage">
           {/* We use map here because Array.prototype.map is an expression,
@@ -34,9 +42,9 @@ class App extends Component {
            */}
           {photos.map(photo => (
             <img
-              alt={/* 3. Fill me in with the photo's filename */ ""}
-              key={/* 4. Fill me in with the photo's id */ ""}
-              src={/* 5. Fill me in with the photo's URL */ ""}
+              alt={/* 3. Fill me in with the photo's filename */ photo.filename}
+              key={/* 4. Fill me in with the photo's id */ photo.id}
+              src={/* 5. Fill me in with the photo's URL */ PHOTO_URL(photo.id)}
             />
           ))}
         </div>
