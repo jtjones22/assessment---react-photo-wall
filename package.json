@@ -25,5 +25,17 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "description": "For this assessment, you'll be creating a photo wall:",
+  "main": "index.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/jtjones22/assessment---react-photo-wall.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/jtjones22/assessment---react-photo-wall/issues"
   }
 }
